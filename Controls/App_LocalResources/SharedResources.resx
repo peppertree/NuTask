@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cmdAddExpense.Text" xml:space="preserve">
+    <value>Book Expense</value>
+  </data>
+  <data name="cmdAddNote.Text" xml:space="preserve">
+    <value>Add Note</value>
+  </data>
+  <data name="cmdAddTask.Text" xml:space="preserve">
+    <value>Add Task</value>
+  </data>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="cmdDeleteTask.Text" xml:space="preserve">
+    <value>Delete Task</value>
+  </data>
+  <data name="cmdUpdate.Text" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Days.Text" xml:space="preserve">
+    <value>Days</value>
+  </data>
+  <data name="Hours.Text" xml:space="preserve">
+    <value>Hours</value>
+  </data>
+  <data name="lblAllocatedBudget.Help" xml:space="preserve">
+    <value>Enter the allocated budget for this task</value>
+  </data>
+  <data name="lblAllocatedBudget.Text" xml:space="preserve">
+    <value>Allocated Budget:</value>
+  </data>
+  <data name="lblAllocatedExpenses.Help" xml:space="preserve">
+    <value>The amount spent so far for the task (readonly)</value>
+  </data>
+  <data name="lblAllocatedExpenses.Text" xml:space="preserve">
+    <value>Expenses:</value>
+  </data>
+  <data name="lblAssignedTo.Text" xml:space="preserve">
+    <value>Assigned to:</value>
+  </data>
+  <data name="lblExpenseText.Help" xml:space="preserve">
+    <value>Enter the title of the booking</value>
+  </data>
+  <data name="lblExpenseText.Text" xml:space="preserve">
+    <value>Booking Text:</value>
+  </data>
+  <data name="lblCategory.Text" xml:space="preserve">
+    <value>Category:</value>
+  </data>
+  <data name="lblDueDate.Text" xml:space="preserve">
+    <value>Due Date:</value>
+  </data>
+  <data name="lblEndDate.Text" xml:space="preserve">
+    <value>End Date:</value>
+  </data>
+  <data name="lblEstimatedTime.Help" xml:space="preserve">
+    <value>Enter how much time you estimate for this task</value>
+  </data>
+  <data name="lblEstimatedTime.Text" xml:space="preserve">
+    <value>Estimed time:</value>
+  </data>
+  <data name="lblEstimatedTimeUnit.Help" xml:space="preserve">
+    <value>Select the unit that the selected time is in</value>
+  </data>
+  <data name="lblEstimatedTimeUnit.Text" xml:space="preserve">
+    <value>Estimated Time Unit:</value>
+  </data>
+  <data name="lblNote.Help" xml:space="preserve">
+    <value>Enter the text of the note</value>
+  </data>
+  <data name="lblNote.Text" xml:space="preserve">
+    <value>Note:</value>
+  </data>
+  <data name="lblProject.Text" xml:space="preserve">
+    <value>Project:</value>
+  </data>
+  <data name="lblStartDate.Text" xml:space="preserve">
+    <value>Start Date:</value>
+  </data>
+  <data name="lblStatus.Text" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="lblTaskDescription.Text" xml:space="preserve">
+    <value>Description:</value>
+  </data>
+  <data name="lblTaskName.Help" xml:space="preserve">
+    <value>Add a name for the task</value>
+  </data>
+  <data name="lblTaskName.Text" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="Months.Text" xml:space="preserve">
+    <value>Months</value>
+  </data>
+  <data name="SelectAssignee.Text" xml:space="preserve">
+    <value>&lt;Select Assignee...&gt;</value>
+  </data>
+  <data name="valAmountAllowance.ErrorMessage" xml:space="preserve">
+    <value>You must enter a decimal value for the allowed amount</value>
+  </data>
+  <data name="valAmountAllowanceReq.ErrorMessage" xml:space="preserve">
+    <value>You must provide the amount allowance</value>
+  </data>
+  <data name="valAmountEstimated.ErrorMessage" xml:space="preserve">
+    <value>You must enter a decimal value for the estimated amount</value>
+  </data>
+  <data name="valAmountEstimatedReq.ErrorMessage" xml:space="preserve">
+    <value>You must provide the estimated amount</value>
+  </data>
+  <data name="valAmountSpent.ErrorMessage" xml:space="preserve">
+    <value>You must enter a decimal value for the amount spent</value>
+  </data>
+  <data name="valAmountSpentReq.ErrorMessage" xml:space="preserve">
+    <value>You must provide the amount spent</value>
+  </data>
+  <data name="valExpenseText.ErrorMessage" xml:space="preserve">
+    <value>You must provide a booking text for the expense</value>
+  </data>
+  <data name="valEstimatedTime.ErrorMessage" xml:space="preserve">
+    <value>You must enter a decimal value for the estimated time</value>
+  </data>
+  <data name="valEstimatedTimeReq.ErrorMessage" xml:space="preserve">
+    <value>You must provide the estimated time</value>
+  </data>
+  <data name="valNote.ErrorMessage" xml:space="preserve">
+    <value>You must provide a text for the note</value>
+  </data>
+  <data name="valTaskName.ErrorMessage" xml:space="preserve">
+    <value>You must provide a name for the task</value>
+  </data>
+  <data name="Weeks.Text" xml:space="preserve">
+    <value>Weeks</value>
+  </data>
+  <data name="tabBasicValues.Text" xml:space="preserve">
+    <value>Basic Information</value>
+  </data>
+  <data name="tabFinacialValues.Text" xml:space="preserve">
+    <value>Accounting</value>
+  </data>
+  <data name="tabTimingValues.Text" xml:space="preserve">
+    <value>Schedules</value>
+  </data>
+  <data name="Allowance.Header" xml:space="preserve">
+    <value>Budget</value>
+  </data>
+  <data name="Category.Header" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="cmdEditTask.Text" xml:space="preserve">
+    <value>Edit Task</value>
+  </data>
+  <data name="lblViewTask_AmountAllowance.Text" xml:space="preserve">
+    <value>Task Budget:</value>
+  </data>
+  <data name="lblViewTask_AmountEstimated.Text" xml:space="preserve">
+    <value>Current Quote:</value>
+  </data>
+  <data name="lblViewTask_AmountSpent.Text" xml:space="preserve">
+    <value>Currently spent:</value>
+  </data>
+  <data name="lblViewTask_AssignedTo.Text" xml:space="preserve">
+    <value>Assigned To:</value>
+  </data>
+  <data name="lblViewTask_Category.Text" xml:space="preserve">
+    <value>Area:</value>
+  </data>
+  <data name="lblViewTask_CreatedBy.Text" xml:space="preserve">
+    <value>Created By:</value>
+  </data>
+  <data name="lblViewTask_DueDate.Text" xml:space="preserve">
+    <value>Due On:</value>
+  </data>
+  <data name="lblViewTask_EndDate.Text" xml:space="preserve">
+    <value>Finish Date:</value>
+  </data>
+  <data name="lblViewTask_EstimatedTime.Text" xml:space="preserve">
+    <value>Estimated Time:</value>
+  </data>
+  <data name="lblViewTask_Notes.Text" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="lblViewTask_StartDate.Text" xml:space="preserve">
+    <value>Start Date:</value>
+  </data>
+  <data name="lblViewTask_Status.Text" xml:space="preserve">
+    <value>Current Status:</value>
+  </data>
+  <data name="NoNotesFound.Text" xml:space="preserve">
+    <value>No notes have been added to this task...</value>
+  </data>
+  <data name="Spent.Header" xml:space="preserve">
+    <value>Expenses</value>
+  </data>
+  <data name="Status.Header" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="TaskName.Header" xml:space="preserve">
+    <value>Task</value>
+  </data>
+  <data name="lblExpenseAmount.Help" xml:space="preserve">
+    <value>Enter the amount of the expense</value>
+  </data>
+  <data name="lblExpenseAmount.Text" xml:space="preserve">
+    <value>Amount:</value>
+  </data>
+  <data name="lblExpenseReceiptNumber.Help" xml:space="preserve">
+    <value>You optionally enter a receipt number of the expense (please refer to the orioginal receipt)</value>
+  </data>
+  <data name="lblExpenseReceiptNumber.Text" xml:space="preserve">
+    <value>Receipt No.:</value>
+  </data>
+  <data name="lblExpenseTask.Help" xml:space="preserve">
+    <value>You may select a task that the expense belongs to. You may also create a new task by entering a new task title in the textbox.</value>
+  </data>
+  <data name="lblExpenseTask.Text" xml:space="preserve">
+    <value>Assgined Task:</value>
+  </data>
+  <data name="EnterOrSelect.Text" xml:space="preserve">
+    <value>&lt;Enter new or select existing...&gt;</value>
+  </data>
+  <data name="lblExpenseCategory.Help" xml:space="preserve">
+    <value>Select a category for the expense or create a new one by entering the name of the new category</value>
+  </data>
+  <data name="lblExpenseCategory.Text" xml:space="preserve">
+    <value>Category:</value>
+  </data>
+  <data name="NoRecordsFound.Text" xml:space="preserve">
+    <value>&lt;p style='padding:10px;'&gt;No records found...&lt;/p&gt;</value>
+  </data>
+  <data name="lblAssignedTo.Help" xml:space="preserve">
+    <value>Optionally set who this task is assigned to</value>
+  </data>
+  <data name="lblCategory.Help" xml:space="preserve">
+    <value>Set the category of the task</value>
+  </data>
+  <data name="lblDueDate.Help" xml:space="preserve">
+    <value>Set the date that this task is due to be resolved</value>
+  </data>
+  <data name="lblEndDate.Help" xml:space="preserve">
+    <value>Set the date that work on this task must end</value>
+  </data>
+  <data name="lblProject.Help" xml:space="preserve">
+    <value>Set the project that this task belongs to</value>
+  </data>
+  <data name="lblStartDate.Help" xml:space="preserve">
+    <value>Set the date that work on this task must begin</value>
+  </data>
+  <data name="lblStatus.Help" xml:space="preserve">
+    <value>Set the current status of the task</value>
+  </data>
+  <data name="lblTaskDescription.Help" xml:space="preserve">
+    <value>Enter a description of the task</value>
+  </data>
+  <data name="cmdDeleteExpense.Text" xml:space="preserve">
+    <value>Delete Expense</value>
+  </data>
+  <data name="cmdUpdateExpense.Text" xml:space="preserve">
+    <value>Update Expense</value>
+  </data>
+  <data name="lblExpenseDate.Help" xml:space="preserve">
+    <value>Select or enter the date of the expense</value>
+  </data>
+  <data name="lblExpenseDate.Text" xml:space="preserve">
+    <value>Expense Date:</value>
+  </data>
+  <data name="valExpenseAmount.ErrorMessage" xml:space="preserve">
+    <value>You must provide the amount of the expense as a decimal value</value>
+  </data>
+  <data name="lblSelectProject.Help" xml:space="preserve">
+    <value>Select the Project that the note is assigned to</value>
+  </data>
+  <data name="lblSelectProject.Text" xml:space="preserve">
+    <value>Assigned Project:</value>
+  </data>
+  <data name="lblSelectTask.Help" xml:space="preserve">
+    <value>Select the Task that the note is assigned to</value>
+  </data>
+  <data name="lblSelectTask.Text" xml:space="preserve">
+    <value>Assigned to Task:</value>
+  </data>
+  <data name="SelectOrEmpty.Text" xml:space="preserve">
+    <value>&lt;Select or leave blank...&gt;</value>
+  </data>
+  <data name="ExpenseUpdate.Error" xml:space="preserve">
+    <value>An error occured while saving to the database. &lt;p&gt;[{0}]&lt;/p&gt;</value>
+  </data>
+  <data name="lblViewTask_AssignedDate.Text" xml:space="preserve">
+    <value>Assigned On:</value>
+  </data>
+  <data name="lblViewTask_CreatedDate.Text" xml:space="preserve">
+    <value>Created On:</value>
+  </data>
+  <data name="SelectTask.Text" xml:space="preserve">
+    <value>&lt;Select Task...&gt;</value>
+  </data>
+  <data name="valExpenseCategory.ErrorMessage" xml:space="preserve">
+    <value>You must select a category for the expense or enter a new one</value>
+  </data>
+  <data name="valExpenseDate.ErrorMessage" xml:space="preserve">
+    <value>You must enter a date for the expense</value>
+  </data>
+  <data name="valSelectTask.ErrorMessage" xml:space="preserve">
+    <value>You must select an assigned task</value>
+  </data>
+  <data name="AllCategories.Text" xml:space="preserve">
+    <value>Show All Categories</value>
+  </data>
+  <data name="Amount.Header" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="EditExpense.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="ExpenseDate.Header" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="ExpenseFilter_All.Text" xml:space="preserve">
+    <value>All Expenses</value>
+  </data>
+  <data name="ExpenseFilter_Project.Text" xml:space="preserve">
+    <value>Project Expenses</value>
+  </data>
+  <data name="ExpenseFilter_Task.Text" xml:space="preserve">
+    <value>Task Expenses</value>
+  </data>
+  <data name="lblBalance.Text" xml:space="preserve">
+    <value>Available funds:</value>
+  </data>
+  <data name="lblExpenseFilterByCategory.Help" xml:space="preserve">
+    <value>You may also filter by expense category</value>
+  </data>
+  <data name="lblExpenseFilterByCategory.Text" xml:space="preserve">
+    <value>Filter by</value>
+  </data>
+  <data name="lblExpenseFilterByType.Help" xml:space="preserve">
+    <value>Select what type of expenses to display</value>
+  </data>
+  <data name="lblExpenseFilterByType.Text" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="lblExpensesAll.Text" xml:space="preserve">
+    <value>Total Expenses:</value>
+  </data>
+  <data name="lblExpenseTotal.Text" xml:space="preserve">
+    <value>Total:</value>
+  </data>
+  <data name="lblProjectBudget.Text" xml:space="preserve">
+    <value>Project Budget:</value>
+  </data>
+  <data name="lblProjectDueDate.Text" xml:space="preserve">
+    <value>Due Date:</value>
+  </data>
+  <data name="lblProjectExpenses.Text" xml:space="preserve">
+    <value>Project Expenses:</value>
+  </data>
+  <data name="lblTaskBudget.Text" xml:space="preserve">
+    <value>Required funds:</value>
+  </data>
+  <data name="lblTaskExpenses.Text" xml:space="preserve">
+    <value>Task Expenses:</value>
+  </data>
+  <data name="Task.Header" xml:space="preserve">
+    <value>Task</value>
+  </data>
+  <data name="TaskUpdate.Error" xml:space="preserve">
+    <value>An error occured while saving to the database. &lt;p&gt;[{0}]&lt;/p&gt;</value>
+  </data>
+  <data name="Title.Header" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="valTaskCategory.ErrorMessage" xml:space="preserve">
+    <value>You must select a category for the task or enter a new one</value>
+  </data>
+  <data name="NoExpensesFound.Text" xml:space="preserve">
+    <value>&lt;p style='padding:10px;'&gt;Nothing spent so far...&lt;/p&gt;</value>
+  </data>
+  <data name="tabExpenses.Text" xml:space="preserve">
+    <value>Expenses</value>
+  </data>
+  <data name="tabTask.Text" xml:space="preserve">
+    <value>Task</value>
+  </data>
+</root>

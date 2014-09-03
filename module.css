@@ -1,0 +1,32 @@
+﻿.nutaskbox      {background-color: #dadada; border: 1px solid #ccc; border-radius: 3px; padding: 10px 10px 10px 30px;margin: 0 0 15px 0;}
+.nutaskplain    {padding: 0px 40px 10px 0px;}
+.nutaskclean    {padding: 10px 10px 10px 10px;}
+.financial      {background-image: url(images/24px/euro_currency_sign.png); background-position: 10px 10px; background-repeat: no-repeat;}
+.timing         {background-image: url(images/24px/clock.png); background-position: 10px 10px; background-repeat: no-repeat;}
+.people         {background-image: url(images/24px/male_users.png); background-position: 10px 10px; background-repeat: no-repeat;}
+.notescontainer {}
+.help          {background-image: url(images/24px/help.png); background-position: 10px 10px; background-repeat: no-repeat;}
+h2.nutaskhead   {margin: 10px 0 20px 0; font-size: 24px; font-weight: bold;}
+.notescontainer ul,
+notescontainer ul li   { list-style-type: none; margin: 0; padding:0;}
+
+.nutask_noteshead   {background: url(images/24px/note.png) left center no-repeat; color: #333; font-size: 18px; font-weight: bold; padding: 8px 0 5px 30px;}
+.nutask_noteauthor  {display: block; width: 250px; height: 20px; font-weight: normal; color: #333; font-size: 10px;}
+.nutask_noteitem    {display: block; width: 420px; padding: 8px; background: #e9e9e9; border: 1px solid #ccc; margin: 0 0 10px 0px; border-radius: 6px;}
+
+#nutaskFrmTask .dnnLabel    {width: 13%;}
+
+table.NuTask_ProjectSummary {width: 500px; border: 1px solid #ccc; background: #dedede; margin: 0 0 20px 0;}
+.NuTask_ProjectSummary td   {text-align: right; padding:8px; background: #eee;}
+.NuTaskExceedLabel  { font-weight: bold; color: #FE8080;}
+.NuTaskInRangeLabel  { font-weight: bold; color: #008E00;}
+.NuTask_ProjectSummary td.nutask_balance       {background: #c0c0c0; border-top: 1px solid #999; color: #555; font-weight: bold;}
+
+.NuTask_FilterTable     {margin: 0 0 10px 0; border: 1px solid #ccc; width:100%;}
+.NuTask_FilterTable td.NuTask_FilterControl  {background: #fdfdfd; width: 250px; padding: 8px;}
+.NuTask_FilterTable td.NuTask_FilterLabel   {background: #fdfdfd;width: 120px; padding: 15px 0 0 0;}
+.NuTask_FilterTable .dnnLabel   {width: 80px;}
+
+.NuTask_TotalTable     {margin: 10px 0 0 0; border: 1px solid #ccc; width:100%;}
+.NuTask_TotalTable td.NuTask_Value  {background: #fdfdfd; width: 120px; padding: 8px 12px 8px 0; text-align: right;}
+.NuTask_TotalTable td.NuTask_Label   {background: #fdfdfd;padding: 8px 0 0 0; text-align: right;}

@@ -1,0 +1,6 @@
+D:\Websites\dev_NuTask\wwwRoot\bin\Peppertree.NuTask.dll
+D:\Websites\dev_NuTask\wwwRoot\bin\Peppertree.NuTask.pdb
+D:\Websites\dev_NuTask\wwwRoot\bin\Peppertree.NuKommerce.xml
+D:\Websites\dev_NuTask\wwwRoot\DesktopModules\NuTask\obj\Debug\Peppertree.NuTask.dll
+D:\Websites\dev_NuTask\wwwRoot\DesktopModules\NuTask\obj\Debug\Peppertree.NuKommerce.xml
+D:\Websites\dev_NuTask\wwwRoot\DesktopModules\NuTask\obj\Debug\Peppertree.NuTask.pdb

@@ -1,0 +1,1291 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Peppertree.NuTask
+</name>
+</assembly>
+<members>
+<member name="F:Peppertree.Solutions.NuTask.frmNote.ctlScripts">
+	<summary>
+ctlScripts control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmNote.ctlAjax">
+	<summary>
+ctlAjax control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmNote.pnlError">
+	<summary>
+pnlError control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmNote.lblError">
+	<summary>
+lblError control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmNote.pnlSelectProject">
+	<summary>
+pnlSelectProject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmNote.lblSelectProject">
+	<summary>
+lblSelectProject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmNote.drpProjects">
+	<summary>
+drpProjects control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmNote.pnlSelectTask">
+	<summary>
+pnlSelectTask control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmNote.lblSelectTask">
+	<summary>
+lblSelectTask control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmNote.drpTasks">
+	<summary>
+drpTasks control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmNote.lblNote">
+	<summary>
+lblNote control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmNote.txtNote">
+	<summary>
+txtNote control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmNote.cmdAddNote">
+	<summary>
+cmdAddNote control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmNote.lnkCancel">
+	<summary>
+lnkCancel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmNote.ctlLoading">
+	<summary>
+ctlLoading control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.ctlAjax">
+	<summary>
+ctlAjax control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.pnlError">
+	<summary>
+pnlError control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.lblError">
+	<summary>
+lblError control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.pnlSelectProject">
+	<summary>
+pnlSelectProject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.lblSelectProject">
+	<summary>
+lblSelectProject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.drpProjects">
+	<summary>
+drpProjects control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.pnlSelectTask">
+	<summary>
+pnlSelectTask control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.lblSelectTask">
+	<summary>
+lblSelectTask control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.drpTasks">
+	<summary>
+drpTasks control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.lblExpenseText">
+	<summary>
+lblExpenseText control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.txtExpenseText">
+	<summary>
+txtExpenseText control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.lblExpenseDate">
+	<summary>
+lblExpenseDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.ctlExpenseDate">
+	<summary>
+ctlExpenseDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.lblExpenseCategory">
+	<summary>
+lblExpenseCategory control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.drpExpenseCategory">
+	<summary>
+drpExpenseCategory control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.lblExpenseAmount">
+	<summary>
+lblExpenseAmount control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.txtExpenseAmount">
+	<summary>
+txtExpenseAmount control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.lblExpenseReceiptNumber">
+	<summary>
+lblExpenseReceiptNumber control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.txtExpenseReceiptNumber">
+	<summary>
+txtExpenseReceiptNumber control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.pnlExpenseFormActions">
+	<summary>
+pnlExpenseFormActions control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.cmdUpdate">
+	<summary>
+cmdUpdate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.cmdDelete">
+	<summary>
+cmdDelete control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.lnkCancel">
+	<summary>
+lnkCancel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmExpense.ctlLoading">
+	<summary>
+ctlLoading control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.ctlScripts">
+	<summary>
+ctlScripts control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.ctlAjax">
+	<summary>
+ctlAjax control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.pnlProject">
+	<summary>
+pnlProject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.lblProjectTitle">
+	<summary>
+lblProjectTitle control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.lblProjectDescription">
+	<summary>
+lblProjectDescription control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.lblProjectDueDate">
+	<summary>
+lblProjectDueDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.lblProjectDueDateValue">
+	<summary>
+lblProjectDueDateValue control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.lblProjectBudget">
+	<summary>
+lblProjectBudget control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.lblProjectBudgetValue">
+	<summary>
+lblProjectBudgetValue control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.lblTaskBudget">
+	<summary>
+lblTaskBudget control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.lblTaskBudgetValue">
+	<summary>
+lblTaskBudgetValue control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.lnkProjectExpenses">
+	<summary>
+lnkProjectExpenses control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.lblProjectExpensesValue">
+	<summary>
+lblProjectExpensesValue control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.lnkTaskExpenses">
+	<summary>
+lnkTaskExpenses control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.lblTaskExpensesValue">
+	<summary>
+lblTaskExpensesValue control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.lnkExpensesAll">
+	<summary>
+lnkExpensesAll control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.lblExpensesAllValue">
+	<summary>
+lblExpensesAllValue control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.lblBalance">
+	<summary>
+lblBalance control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.lblBalanceValue">
+	<summary>
+lblBalanceValue control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.pnlTaskGrid">
+	<summary>
+pnlTaskGrid control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.grdTasks">
+	<summary>
+grdTasks control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.pnlGridActions">
+	<summary>
+pnlGridActions control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.lnkAddTask">
+	<summary>
+lnkAddTask control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.lnkAddNote">
+	<summary>
+lnkAddNote control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.lnkAddExpense">
+	<summary>
+lnkAddExpense control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Tasks.ctlLoading">
+	<summary>
+ctlLoading control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Expenses.ctlAjax">
+	<summary>
+ctlAjax control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Expenses.pnlFilter">
+	<summary>
+pnlFilter control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Expenses.lblExpenseFilterByType">
+	<summary>
+lblExpenseFilterByType control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Expenses.drpFilter">
+	<summary>
+drpFilter control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Expenses.lblExpenseFilterByCategory">
+	<summary>
+lblExpenseFilterByCategory control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Expenses.drpCategories">
+	<summary>
+drpCategories control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Expenses.grdExpenses">
+	<summary>
+grdExpenses control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Expenses.lblExpenseTotal">
+	<summary>
+lblExpenseTotal control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Expenses.lblExpenseTotalValue">
+	<summary>
+lblExpenseTotalValue control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Expenses.pnlGridActions">
+	<summary>
+pnlGridActions control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Expenses.lnkAddExpense">
+	<summary>
+lnkAddExpense control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Expenses.ctlLoading">
+	<summary>
+ctlLoading control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.ctlAjax">
+	<summary>
+ctlAjax control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.tabBasicValues">
+	<summary>
+tabBasicValues control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.tabFinacialValues">
+	<summary>
+tabFinacialValues control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.tabTimingValues">
+	<summary>
+tabTimingValues control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.pnlError">
+	<summary>
+pnlError control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.lblError">
+	<summary>
+lblError control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.lblTaskName">
+	<summary>
+lblTaskName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.txtTaskName">
+	<summary>
+txtTaskName control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.lblTaskDescription">
+	<summary>
+lblTaskDescription control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.txtTaskDescription">
+	<summary>
+txtTaskDescription control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.pnlProject">
+	<summary>
+pnlProject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.lblProject">
+	<summary>
+lblProject control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.drpProjects">
+	<summary>
+drpProjects control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.lblCategory">
+	<summary>
+lblCategory control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.drpCategories">
+	<summary>
+drpCategories control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.lblStatus">
+	<summary>
+lblStatus control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.drpStatus">
+	<summary>
+drpStatus control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.lblAssignedTo">
+	<summary>
+lblAssignedTo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.drpUsers">
+	<summary>
+drpUsers control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.lblAllocatedBudget">
+	<summary>
+lblAllocatedBudget control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.txtAllocatedBudget">
+	<summary>
+txtAllocatedBudget control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.lblAllocatedExpenses">
+	<summary>
+lblAllocatedExpenses control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.txtAllocatedExpenses">
+	<summary>
+txtAllocatedExpenses control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.lblDueDate">
+	<summary>
+lblDueDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.ctlDueDate">
+	<summary>
+ctlDueDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.lblStartDate">
+	<summary>
+lblStartDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.ctlStartDate">
+	<summary>
+ctlStartDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.lblEndDate">
+	<summary>
+lblEndDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.ctlEndDate">
+	<summary>
+ctlEndDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.lblEstimatedTime">
+	<summary>
+lblEstimatedTime control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.txtEstimatedTime">
+	<summary>
+txtEstimatedTime control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.lblEstimatedTimeUnit">
+	<summary>
+lblEstimatedTimeUnit control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.drpEstimatedTimeUnit">
+	<summary>
+drpEstimatedTimeUnit control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.pnlTaskFormActions">
+	<summary>
+pnlTaskFormActions control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.cmdUpdateTask">
+	<summary>
+cmdUpdateTask control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.cmdDeleteTask">
+	<summary>
+cmdDeleteTask control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.lnkCancelEdit">
+	<summary>
+lnkCancelEdit control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.frmTask.ctlLoading">
+	<summary>
+ctlLoading control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Projects.ctlAjax">
+	<summary>
+ctlAjax control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.List_Projects.ctlLoading">
+	<summary>
+ctlLoading control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.View.plhControls">
+	<summary>
+plhControls control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.ctlAjax">
+	<summary>
+ctlAjax control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblTaskValue_Title">
+	<summary>
+lblTaskValue_Title control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.pnlTaskView">
+	<summary>
+pnlTaskView control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.tabTask">
+	<summary>
+tabTask control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.tabExpenses">
+	<summary>
+tabExpenses control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblTaskValue_Description">
+	<summary>
+lblTaskValue_Description control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblViewTask_Notes">
+	<summary>
+lblViewTask_Notes control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.rptNotes">
+	<summary>
+rptNotes control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.grdTaskExpenses">
+	<summary>
+grdTaskExpenses control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblExpenseTotal">
+	<summary>
+lblExpenseTotal control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblTaskExpenseTotalValue">
+	<summary>
+lblTaskExpenseTotalValue control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblViewTask_Category">
+	<summary>
+lblViewTask_Category control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblTaskValue_Category">
+	<summary>
+lblTaskValue_Category control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblViewTask_Status">
+	<summary>
+lblViewTask_Status control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblTaskValue_Status">
+	<summary>
+lblTaskValue_Status control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblViewTask_AmountAllowance">
+	<summary>
+lblViewTask_AmountAllowance control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblTaskValue_AmountAllowance">
+	<summary>
+lblTaskValue_AmountAllowance control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblViewTask_AmountSpent">
+	<summary>
+lblViewTask_AmountSpent control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblTaskValue_AmountSpent">
+	<summary>
+lblTaskValue_AmountSpent control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblViewTask_EstimatedTime">
+	<summary>
+lblViewTask_EstimatedTime control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblTaskValue_EstimatedTime">
+	<summary>
+lblTaskValue_EstimatedTime control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblViewTask_DueDate">
+	<summary>
+lblViewTask_DueDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblTaskValue_DueDate">
+	<summary>
+lblTaskValue_DueDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblViewTask_StartDate">
+	<summary>
+lblViewTask_StartDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblTaskValue_StartDate">
+	<summary>
+lblTaskValue_StartDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblViewTask_EndDate">
+	<summary>
+lblViewTask_EndDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblTaskValue_EndDate">
+	<summary>
+lblTaskValue_EndDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblViewTask_AssignedTo">
+	<summary>
+lblViewTask_AssignedTo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblTaskValue_AssignedTo">
+	<summary>
+lblTaskValue_AssignedTo control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblViewTask_AssignedDate">
+	<summary>
+lblViewTask_AssignedDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblTaskValue_AssignedDate">
+	<summary>
+lblTaskValue_AssignedDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblViewTask_CreatedBy">
+	<summary>
+lblViewTask_CreatedBy control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblTaskValue_CreatedBy">
+	<summary>
+lblTaskValue_CreatedBy control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblViewTask_CreatedDate">
+	<summary>
+lblViewTask_CreatedDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lblTaskValue_CreatedDate">
+	<summary>
+lblTaskValue_CreatedDate control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lnkAddExpense">
+	<summary>
+lnkAddExpense control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lnkAddNote">
+	<summary>
+lnkAddNote control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lnkEditTask">
+	<summary>
+lnkEditTask control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.cmdDeleteTask">
+	<summary>
+cmdDeleteTask control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.lnkCancel">
+	<summary>
+lnkCancel control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.pnlTaskForm">
+	<summary>
+pnlTaskForm control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member><member name="F:Peppertree.Solutions.NuTask.vwTask.ctlLoading">
+	<summary>
+ctlLoading control.
+</summary>
+	<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+</members>
+</doc>

@@ -1,0 +1,2633 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+
+
+/* =====================================================================================
+/   TABLE: Expense
+/  ===================================================================================== */
+
+/****** Object:  Select PK Stored Procedure {databaseOwner}{objectQualifier}NuTask_Expense_Get    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Expense_Get') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Expense_Get
+GO
+
+/****** Object:  List Stored Procedure {databaseOwner}{objectQualifier}NuTask_Expense_List    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Expense_List') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Expense_List
+GO
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_Expense_GetByExpenseCategory    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Expense_ListByExpenseCategory') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Expense_ListByExpenseCategory
+GO
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_Expense_GetByProject    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Expense_ListByProject') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Expense_ListByProject
+GO
+
+/****** Object:  Insert Stored Procedure {databaseOwner}{objectQualifier}NuTask_Expense_Add    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Expense_Add') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Expense_Add
+GO
+
+/****** Object:  Update Stored Procedure {databaseOwner}{objectQualifier}NuTask_Expense_Update    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Expense_Update') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Expense_Update
+GO
+
+/****** Object:  Delete Stored Procedure {databaseOwner}{objectQualifier}NuTask_Expense_Delete    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Expense_Delete') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Expense_Delete
+GO
+	
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_Expense_GetByTaskId    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Expense_ListByTaskId') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Expense_ListByTaskId
+GO        
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Expense_Get
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Expense_Get
+	@ExpenseId int
+AS
+
+SELECT
+	[NuTask_Expense].[ExpenseId],
+ 	[EC].[Title] as CategoryName,
+	[NuTask_Expense].[CategoryId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_Expense].[ProjectId],
+ 	[TA].[Title] as TaskTitle,
+	[NuTask_Expense].[TaskId],
+	[NuTask_Expense].[ExpenseDate],
+	[NuTask_Expense].[Title],
+	[NuTask_Expense].[Amount],
+	[NuTask_Expense].[ReceiptNo],
+	[NuTask_Expense].[ImageUrl]
+FROM {objectQualifier}NuTask_Expense
+    INNER JOIN NuTask_ExpenseCategory EC ON {objectQualifier}NuTask_Expense.CategoryId = EC.CategoryId
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_Expense.ProjectId = PR.ProjectId
+    LEFT OUTER JOIN NuTask_Task TA ON {objectQualifier}NuTask_Expense.TaskId = TA.TaskId
+WHERE
+	[{objectQualifier}NuTask_Expense].[ExpenseId] = @ExpenseId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Expense_List 
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Expense_List
+AS
+
+SELECT
+	[NuTask_Expense].[ExpenseId],
+ 	[EC].[Title] as CategoryName,
+	[NuTask_Expense].[CategoryId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_Expense].[ProjectId],
+ 	[TA].[Title] as TaskTitle,
+	[NuTask_Expense].[TaskId],
+	[NuTask_Expense].[ExpenseDate],
+	[NuTask_Expense].[Title],
+	[NuTask_Expense].[Amount],
+	[NuTask_Expense].[ReceiptNo],
+	[NuTask_Expense].[ImageUrl]
+FROM {objectQualifier}NuTask_Expense
+    INNER JOIN NuTask_ExpenseCategory EC ON {objectQualifier}NuTask_Expense.CategoryId = EC.CategoryId
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_Expense.ProjectId = PR.ProjectId
+    LEFT OUTER JOIN NuTask_Task TA ON {objectQualifier}NuTask_Expense.TaskId = TA.TaskId
+ORDER BY
+ 	[NuTask_Expense].[ExpenseDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+            
+/* -------------------------------------------------------------------------------------
+/   NuTask_Expense_ListByTaskId 
+/  ------------------------------------------------------------------------------------- */
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Expense_ListByTaskId
+	@TaskId int
+AS
+
+SELECT
+	[NuTask_Expense].[ExpenseId],
+ 	[EC].[Title] as CategoryName,
+	[NuTask_Expense].[CategoryId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_Expense].[ProjectId],
+ 	[TA].[Title] as TaskTitle,
+	[NuTask_Expense].[TaskId],
+	[NuTask_Expense].[ExpenseDate],
+	[NuTask_Expense].[Title],
+	[NuTask_Expense].[Amount],
+	[NuTask_Expense].[ReceiptNo],
+	[NuTask_Expense].[ImageUrl]
+FROM {objectQualifier}NuTask_Expense
+    INNER JOIN NuTask_ExpenseCategory EC ON {objectQualifier}NuTask_Expense.CategoryId = EC.CategoryId
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_Expense.ProjectId = PR.ProjectId
+    LEFT OUTER JOIN NuTask_Task TA ON {objectQualifier}NuTask_Expense.TaskId = TA.TaskId
+WHERE
+	[NuTask_Expense].[TaskId] = @TaskId
+ORDER BY
+ 	[NuTask_Expense].[ExpenseDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO            
+            
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Expense_ListByExpenseCategory
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Expense_ListByExpenseCategory
+	@CategoryId int
+AS
+
+SELECT
+	[NuTask_Expense].[ExpenseId],
+ 	[EC].[Title] as CategoryName,
+	[NuTask_Expense].[CategoryId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_Expense].[ProjectId],
+ 	[TA].[Title] as TaskTitle,
+	[NuTask_Expense].[TaskId],
+	[NuTask_Expense].[ExpenseDate],
+	[NuTask_Expense].[Title],
+	[NuTask_Expense].[Amount],
+	[NuTask_Expense].[ReceiptNo],
+	[NuTask_Expense].[ImageUrl]
+FROM {objectQualifier}NuTask_Expense
+    INNER JOIN NuTask_ExpenseCategory EC ON {objectQualifier}NuTask_Expense.CategoryId = EC.CategoryId
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_Expense.ProjectId = PR.ProjectId
+    LEFT OUTER JOIN NuTask_Task TA ON {objectQualifier}NuTask_Expense.TaskId = TA.TaskId
+WHERE
+	[NuTask_Expense].[CategoryId]=@CategoryId
+ORDER BY
+ 	[NuTask_Expense].[ExpenseDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+/* -------------------------------------------------------------------------------------
+/   NuTask_Expense_ListByProject
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Expense_ListByProject
+	@ProjectId int
+AS
+
+SELECT
+	[NuTask_Expense].[ExpenseId],
+ 	[EC].[Title] as CategoryName,
+	[NuTask_Expense].[CategoryId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_Expense].[ProjectId],
+ 	[TA].[Title] as TaskTitle,
+	[NuTask_Expense].[TaskId],
+	[NuTask_Expense].[ExpenseDate],
+	[NuTask_Expense].[Title],
+	[NuTask_Expense].[Amount],
+	[NuTask_Expense].[ReceiptNo],
+	[NuTask_Expense].[ImageUrl]
+FROM {objectQualifier}NuTask_Expense
+    INNER JOIN NuTask_ExpenseCategory EC ON {objectQualifier}NuTask_Expense.CategoryId = EC.CategoryId
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_Expense.ProjectId = PR.ProjectId
+    LEFT OUTER JOIN NuTask_Task TA ON {objectQualifier}NuTask_Expense.TaskId = TA.TaskId
+WHERE
+	[NuTask_Expense].[ProjectId]=@ProjectId
+ORDER BY
+ 	[NuTask_Expense].[ExpenseDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Expense_Add
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Expense_Add
+	@CategoryId int
+	,@ProjectId int
+	,@TaskId int
+	,@ExpenseDate date
+	,@Title nvarchar(255)
+	,@Amount money
+	,@ReceiptNo nvarchar(255)
+	,@ImageUrl nvarchar(255)
+AS
+
+INSERT INTO {objectQualifier}NuTask_Expense (
+	[CategoryId]
+	,[ProjectId]
+	,[TaskId]
+	,[ExpenseDate]
+	,[Title]
+	,[Amount]
+	,[ReceiptNo]
+	,[ImageUrl]
+) VALUES (
+	@CategoryId
+	,@ProjectId
+	,@TaskId
+	,@ExpenseDate
+	,@Title
+	,@Amount
+	,@ReceiptNo
+	,@ImageUrl
+)
+
+select SCOPE_IDENTITY()
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Expense_Update
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Expense_Update
+	@ExpenseId int, 
+	@CategoryId int, 
+	@ProjectId int, 
+	@TaskId int, 
+	@ExpenseDate date, 
+	@Title nvarchar(255), 
+	@Amount money, 
+	@ReceiptNo nvarchar(255), 
+	@ImageUrl nvarchar(255) 
+
+AS
+
+UPDATE {objectQualifier}NuTask_Expense SET
+	   [CategoryId] = @CategoryId
+	   ,[ProjectId] = @ProjectId
+	   ,[TaskId] = @TaskId
+	   ,[ExpenseDate] = @ExpenseDate
+	   ,[Title] = @Title
+	   ,[Amount] = @Amount
+	   ,[ReceiptNo] = @ReceiptNo
+	   ,[ImageUrl] = @ImageUrl
+WHERE
+    
+	[ExpenseId] = @ExpenseId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Expense_Delete
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+	
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Expense_Delete
+	@ExpenseId int
+    
+	AS
+
+DELETE FROM {objectQualifier}NuTask_Expense
+WHERE
+    
+	[ExpenseId] = @ExpenseId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/* =====================================================================================
+/   TABLE: ExpenseCategory
+/  ===================================================================================== */
+
+/****** Object:  Select PK Stored Procedure {databaseOwner}{objectQualifier}NuTask_ExpenseCategory_Get    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_ExpenseCategory_Get') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_ExpenseCategory_Get
+GO
+
+/****** Object:  List Stored Procedure {databaseOwner}{objectQualifier}NuTask_ExpenseCategory_List    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_ExpenseCategory_List') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_ExpenseCategory_List
+GO
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_ExpenseCategory_GetByProject    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_ExpenseCategory_ListByProject') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_ExpenseCategory_ListByProject
+GO
+
+/****** Object:  Insert Stored Procedure {databaseOwner}{objectQualifier}NuTask_ExpenseCategory_Add    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_ExpenseCategory_Add') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_ExpenseCategory_Add
+GO
+
+/****** Object:  Update Stored Procedure {databaseOwner}{objectQualifier}NuTask_ExpenseCategory_Update    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_ExpenseCategory_Update') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_ExpenseCategory_Update
+GO
+
+/****** Object:  Delete Stored Procedure {databaseOwner}{objectQualifier}NuTask_ExpenseCategory_Delete    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_ExpenseCategory_Delete') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_ExpenseCategory_Delete
+GO
+	
+
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_ExpenseCategory_Get
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_ExpenseCategory_Get
+	@CategoryId int
+AS
+
+SELECT
+	[NuTask_ExpenseCategory].[CategoryId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_ExpenseCategory].[ProjectId],
+	[NuTask_ExpenseCategory].[Title],
+	[NuTask_ExpenseCategory].[ViewOrder]
+FROM {objectQualifier}NuTask_ExpenseCategory
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_ExpenseCategory.ProjectId = PR.ProjectId
+WHERE
+	[{objectQualifier}NuTask_ExpenseCategory].[CategoryId] = @CategoryId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_ExpenseCategory_List 
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_ExpenseCategory_List
+AS
+
+SELECT
+	[NuTask_ExpenseCategory].[CategoryId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_ExpenseCategory].[ProjectId],
+	[NuTask_ExpenseCategory].[Title],
+	[NuTask_ExpenseCategory].[ViewOrder]
+FROM {objectQualifier}NuTask_ExpenseCategory
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_ExpenseCategory.ProjectId = PR.ProjectId
+ORDER BY
+ 	[NuTask_ExpenseCategory].[ViewOrder] ASC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_ExpenseCategory_ListByProject
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_ExpenseCategory_ListByProject
+	@ProjectId int
+AS
+
+SELECT
+	[NuTask_ExpenseCategory].[CategoryId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_ExpenseCategory].[ProjectId],
+	[NuTask_ExpenseCategory].[Title],
+	[NuTask_ExpenseCategory].[ViewOrder]
+FROM {objectQualifier}NuTask_ExpenseCategory
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_ExpenseCategory.ProjectId = PR.ProjectId
+WHERE
+	[NuTask_ExpenseCategory].[ProjectId]=@ProjectId
+ORDER BY
+ 	[NuTask_ExpenseCategory].[ViewOrder] ASC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_ExpenseCategory_Add
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_ExpenseCategory_Add
+	@ProjectId int
+	,@Title nvarchar(255)
+	,@ViewOrder int
+AS
+
+INSERT INTO {objectQualifier}NuTask_ExpenseCategory (
+	[ProjectId]
+	,[Title]
+	,[ViewOrder]
+) VALUES (
+	@ProjectId
+	,@Title
+	,@ViewOrder
+)
+
+select SCOPE_IDENTITY()
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_ExpenseCategory_Update
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_ExpenseCategory_Update
+	@CategoryId int, 
+	@ProjectId int, 
+	@Title nvarchar(255), 
+	@ViewOrder int 
+
+AS
+
+UPDATE {objectQualifier}NuTask_ExpenseCategory SET
+	   [ProjectId] = @ProjectId
+	   ,[Title] = @Title
+	   ,[ViewOrder] = @ViewOrder
+WHERE
+    
+	[CategoryId] = @CategoryId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_ExpenseCategory_Delete
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+	
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_ExpenseCategory_Delete
+	@CategoryId int
+    
+	AS
+
+DELETE FROM {objectQualifier}NuTask_ExpenseCategory
+WHERE
+    
+	[CategoryId] = @CategoryId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/* =====================================================================================
+/   TABLE: Log
+/  ===================================================================================== */
+
+/****** Object:  Select PK Stored Procedure {databaseOwner}{objectQualifier}NuTask_Log_Get    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Log_Get') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Log_Get
+GO
+
+/****** Object:  List Stored Procedure {databaseOwner}{objectQualifier}NuTask_Log_List    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Log_List') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Log_List
+GO
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_Log_GetByProject    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Log_ListByProject') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Log_ListByProject
+GO
+
+/****** Object:  Insert Stored Procedure {databaseOwner}{objectQualifier}NuTask_Log_Add    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Log_Add') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Log_Add
+GO
+
+/****** Object:  Update Stored Procedure {databaseOwner}{objectQualifier}NuTask_Log_Update    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Log_Update') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Log_Update
+GO
+
+/****** Object:  Delete Stored Procedure {databaseOwner}{objectQualifier}NuTask_Log_Delete    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Log_Delete') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Log_Delete
+GO
+	
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_Log_GetByTaskId    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Log_ListByTaskId') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Log_ListByTaskId
+GO        
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_Log_GetByNoteId    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Log_ListByNoteId') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Log_ListByNoteId
+GO        
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_Log_GetByExpenseId    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Log_ListByExpenseId') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Log_ListByExpenseId
+GO        
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Log_Get
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Log_Get
+	@LogEntryId int
+AS
+
+SELECT
+	[NuTask_Log].[LogEntryId],
+	[NuTask_Log].[ProjectId],
+	[NuTask_Log].[TaskId],
+	[NuTask_Log].[NoteId],
+	[NuTask_Log].[ExpenseId],
+	[NuTask_Log].[LogDate],
+	[NuTask_Log].[LogType],
+	[NuTask_Log].[LogEntry]
+FROM {objectQualifier}NuTask_Log
+WHERE
+	[{objectQualifier}NuTask_Log].[LogEntryId] = @LogEntryId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Log_List 
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Log_List
+AS
+
+SELECT
+	[NuTask_Log].[LogEntryId],
+	[NuTask_Log].[ProjectId],
+	[NuTask_Log].[TaskId],
+	[NuTask_Log].[NoteId],
+	[NuTask_Log].[ExpenseId],
+	[NuTask_Log].[LogDate],
+	[NuTask_Log].[LogType],
+	[NuTask_Log].[LogEntry]
+FROM {objectQualifier}NuTask_Log
+ORDER BY
+ 	[NuTask_Log].[LogDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+            
+/* -------------------------------------------------------------------------------------
+/   NuTask_Log_ListByTaskId 
+/  ------------------------------------------------------------------------------------- */
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Log_ListByTaskId
+	@TaskId int
+AS
+
+SELECT
+	[NuTask_Log].[LogEntryId],
+	[NuTask_Log].[ProjectId],
+	[NuTask_Log].[TaskId],
+	[NuTask_Log].[NoteId],
+	[NuTask_Log].[ExpenseId],
+	[NuTask_Log].[LogDate],
+	[NuTask_Log].[LogType],
+	[NuTask_Log].[LogEntry]
+FROM {objectQualifier}NuTask_Log
+WHERE
+	[NuTask_Log].[TaskId] = @TaskId
+ORDER BY
+ 	[NuTask_Log].[LogDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO            
+            
+            
+/* -------------------------------------------------------------------------------------
+/   NuTask_Log_ListByNoteId 
+/  ------------------------------------------------------------------------------------- */
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Log_ListByNoteId
+	@NoteId int
+AS
+
+SELECT
+	[NuTask_Log].[LogEntryId],
+	[NuTask_Log].[ProjectId],
+	[NuTask_Log].[TaskId],
+	[NuTask_Log].[NoteId],
+	[NuTask_Log].[ExpenseId],
+	[NuTask_Log].[LogDate],
+	[NuTask_Log].[LogType],
+	[NuTask_Log].[LogEntry]
+FROM {objectQualifier}NuTask_Log
+WHERE
+	[NuTask_Log].[NoteId] = @NoteId
+ORDER BY
+ 	[NuTask_Log].[LogDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO            
+            
+            
+/* -------------------------------------------------------------------------------------
+/   NuTask_Log_ListByExpenseId 
+/  ------------------------------------------------------------------------------------- */
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Log_ListByExpenseId
+	@ExpenseId int
+AS
+
+SELECT
+	[NuTask_Log].[LogEntryId],
+	[NuTask_Log].[ProjectId],
+	[NuTask_Log].[TaskId],
+	[NuTask_Log].[NoteId],
+	[NuTask_Log].[ExpenseId],
+	[NuTask_Log].[LogDate],
+	[NuTask_Log].[LogType],
+	[NuTask_Log].[LogEntry]
+FROM {objectQualifier}NuTask_Log
+WHERE
+	[NuTask_Log].[ExpenseId] = @ExpenseId
+ORDER BY
+ 	[NuTask_Log].[LogDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO            
+            
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Log_ListByProject
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Log_ListByProject
+	@ProjectId int
+AS
+
+SELECT
+	[NuTask_Log].[LogEntryId],
+	[NuTask_Log].[ProjectId],
+	[NuTask_Log].[TaskId],
+	[NuTask_Log].[NoteId],
+	[NuTask_Log].[ExpenseId],
+	[NuTask_Log].[LogDate],
+	[NuTask_Log].[LogType],
+	[NuTask_Log].[LogEntry]
+FROM {objectQualifier}NuTask_Log
+WHERE
+	[NuTask_Log].[ProjectId]=@ProjectId
+ORDER BY
+ 	[NuTask_Log].[LogDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Log_Add
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Log_Add
+	@ProjectId int
+	,@TaskId int
+	,@NoteId int
+	,@ExpenseId int
+	,@LogDate datetime
+	,@LogType nvarchar(50)
+	,@LogEntry nvarchar(max)
+AS
+
+INSERT INTO {objectQualifier}NuTask_Log (
+	[ProjectId]
+	,[TaskId]
+	,[NoteId]
+	,[ExpenseId]
+	,[LogDate]
+	,[LogType]
+	,[LogEntry]
+) VALUES (
+	@ProjectId
+	,@TaskId
+	,@NoteId
+	,@ExpenseId
+	,@LogDate
+	,@LogType
+	,@LogEntry
+)
+
+select SCOPE_IDENTITY()
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Log_Update
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Log_Update
+	@LogEntryId int, 
+	@ProjectId int, 
+	@TaskId int, 
+	@NoteId int, 
+	@ExpenseId int, 
+	@LogDate datetime, 
+	@LogType nvarchar(50), 
+	@LogEntry nvarchar(max) 
+
+AS
+
+UPDATE {objectQualifier}NuTask_Log SET
+	   [ProjectId] = @ProjectId
+	   ,[TaskId] = @TaskId
+	   ,[NoteId] = @NoteId
+	   ,[ExpenseId] = @ExpenseId
+	   ,[LogDate] = @LogDate
+	   ,[LogType] = @LogType
+	   ,[LogEntry] = @LogEntry
+WHERE
+    
+	[LogEntryId] = @LogEntryId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Log_Delete
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+	
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Log_Delete
+	@LogEntryId int
+    
+	AS
+
+DELETE FROM {objectQualifier}NuTask_Log
+WHERE
+    
+	[LogEntryId] = @LogEntryId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/* =====================================================================================
+/   TABLE: Note
+/  ===================================================================================== */
+
+/****** Object:  Select PK Stored Procedure {databaseOwner}{objectQualifier}NuTask_Note_Get    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Note_Get') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Note_Get
+GO
+
+/****** Object:  List Stored Procedure {databaseOwner}{objectQualifier}NuTask_Note_List    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Note_List') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Note_List
+GO
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_Note_GetByProject    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Note_ListByProject') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Note_ListByProject
+GO
+
+/****** Object:  Insert Stored Procedure {databaseOwner}{objectQualifier}NuTask_Note_Add    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Note_Add') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Note_Add
+GO
+
+/****** Object:  Update Stored Procedure {databaseOwner}{objectQualifier}NuTask_Note_Update    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Note_Update') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Note_Update
+GO
+
+/****** Object:  Delete Stored Procedure {databaseOwner}{objectQualifier}NuTask_Note_Delete    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Note_Delete') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Note_Delete
+GO
+	
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_Note_GetByTaskId    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Note_ListByTaskId') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Note_ListByTaskId
+GO        
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Note_Get
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Note_Get
+	@NoteId int
+AS
+
+SELECT
+	[NuTask_Note].[NoteId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_Note].[ProjectId],
+ 	[TA].[Title] as TaskTitle,
+	[NuTask_Note].[TaskId],
+ 	[CR].[DisplayName] as CreatedByName,
+	[NuTask_Note].[CreatedBy],
+	[NuTask_Note].[CreatedDate],
+	[NuTask_Note].[Entry]
+FROM {objectQualifier}NuTask_Note
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_Note.ProjectId = PR.ProjectId
+    INNER JOIN NuTask_Task TA ON {objectQualifier}NuTask_Note.TaskId = TA.TaskId
+    INNER JOIN Users CR ON {objectQualifier}NuTask_Note.CreatedBy = CR.UserId
+WHERE
+	[{objectQualifier}NuTask_Note].[NoteId] = @NoteId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Note_List 
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Note_List
+AS
+
+SELECT
+	[NuTask_Note].[NoteId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_Note].[ProjectId],
+ 	[TA].[Title] as TaskTitle,
+	[NuTask_Note].[TaskId],
+ 	[CR].[DisplayName] as CreatedByName,
+	[NuTask_Note].[CreatedBy],
+	[NuTask_Note].[CreatedDate],
+	[NuTask_Note].[Entry]
+FROM {objectQualifier}NuTask_Note
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_Note.ProjectId = PR.ProjectId
+    INNER JOIN NuTask_Task TA ON {objectQualifier}NuTask_Note.TaskId = TA.TaskId
+    INNER JOIN Users CR ON {objectQualifier}NuTask_Note.CreatedBy = CR.UserId
+ORDER BY
+ 	[NuTask_Note].[CreatedDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+            
+/* -------------------------------------------------------------------------------------
+/   NuTask_Note_ListByTaskId 
+/  ------------------------------------------------------------------------------------- */
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Note_ListByTaskId
+	@TaskId int
+AS
+
+SELECT
+	[NuTask_Note].[NoteId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_Note].[ProjectId],
+ 	[TA].[Title] as TaskTitle,
+	[NuTask_Note].[TaskId],
+ 	[CR].[DisplayName] as CreatedByName,
+	[NuTask_Note].[CreatedBy],
+	[NuTask_Note].[CreatedDate],
+	[NuTask_Note].[Entry]
+FROM {objectQualifier}NuTask_Note
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_Note.ProjectId = PR.ProjectId
+    INNER JOIN NuTask_Task TA ON {objectQualifier}NuTask_Note.TaskId = TA.TaskId
+    INNER JOIN Users CR ON {objectQualifier}NuTask_Note.CreatedBy = CR.UserId
+WHERE
+	[NuTask_Note].[TaskId] = @TaskId
+ORDER BY
+ 	[NuTask_Note].[CreatedDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO            
+            
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Note_ListByProject
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Note_ListByProject
+	@ProjectId int
+AS
+
+SELECT
+	[NuTask_Note].[NoteId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_Note].[ProjectId],
+ 	[TA].[Title] as TaskTitle,
+	[NuTask_Note].[TaskId],
+ 	[CR].[DisplayName] as CreatedByName,
+	[NuTask_Note].[CreatedBy],
+	[NuTask_Note].[CreatedDate],
+	[NuTask_Note].[Entry]
+FROM {objectQualifier}NuTask_Note
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_Note.ProjectId = PR.ProjectId
+    INNER JOIN NuTask_Task TA ON {objectQualifier}NuTask_Note.TaskId = TA.TaskId
+    INNER JOIN Users CR ON {objectQualifier}NuTask_Note.CreatedBy = CR.UserId
+WHERE
+	[NuTask_Note].[ProjectId]=@ProjectId
+ORDER BY
+ 	[NuTask_Note].[CreatedDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Note_Add
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Note_Add
+	@ProjectId int
+	,@TaskId int
+	,@CreatedBy int
+	,@CreatedDate datetime
+	,@Entry nvarchar(max)
+AS
+
+INSERT INTO {objectQualifier}NuTask_Note (
+	[ProjectId]
+	,[TaskId]
+	,[CreatedBy]
+	,[CreatedDate]
+	,[Entry]
+) VALUES (
+	@ProjectId
+	,@TaskId
+	,@CreatedBy
+	,@CreatedDate
+	,@Entry
+)
+
+select SCOPE_IDENTITY()
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Note_Update
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Note_Update
+	@NoteId int, 
+	@ProjectId int, 
+	@TaskId int, 
+	@CreatedBy int, 
+	@CreatedDate datetime, 
+	@Entry nvarchar(max) 
+
+AS
+
+UPDATE {objectQualifier}NuTask_Note SET
+	   [ProjectId] = @ProjectId
+	   ,[TaskId] = @TaskId
+	   ,[CreatedBy] = @CreatedBy
+	   ,[CreatedDate] = @CreatedDate
+	   ,[Entry] = @Entry
+WHERE
+    
+	[NoteId] = @NoteId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Note_Delete
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+	
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Note_Delete
+	@NoteId int
+    
+	AS
+
+DELETE FROM {objectQualifier}NuTask_Note
+WHERE
+    
+	[NoteId] = @NoteId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/* =====================================================================================
+/   TABLE: Project
+/  ===================================================================================== */
+
+/****** Object:  Select PK Stored Procedure {databaseOwner}{objectQualifier}NuTask_Project_Get    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Project_Get') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Project_Get
+GO
+
+/****** Object:  List Stored Procedure {databaseOwner}{objectQualifier}NuTask_Project_List    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Project_List') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Project_List
+GO
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_Project_GetByPortals    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Project_ListByPortals') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Project_ListByPortals
+GO
+
+/****** Object:  Insert Stored Procedure {databaseOwner}{objectQualifier}NuTask_Project_Add    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Project_Add') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Project_Add
+GO
+
+/****** Object:  Update Stored Procedure {databaseOwner}{objectQualifier}NuTask_Project_Update    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Project_Update') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Project_Update
+GO
+
+/****** Object:  Delete Stored Procedure {databaseOwner}{objectQualifier}NuTask_Project_Delete    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Project_Delete') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Project_Delete
+GO
+	
+
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Project_Get
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Project_Get
+	@ProjectId int
+AS
+
+SELECT
+	[NuTask_Project].[ProjectId],
+	[NuTask_Project].[PortalId],
+	[NuTask_Project].[ProjectName],
+	[NuTask_Project].[Description],
+	[NuTask_Project].[AllocatedBudget],
+	[NuTask_Project].[DueDate],
+	[NuTask_Project].[MemberRole]
+FROM {objectQualifier}NuTask_Project
+WHERE
+	[{objectQualifier}NuTask_Project].[ProjectId] = @ProjectId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Project_List 
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Project_List
+AS
+
+SELECT
+	[NuTask_Project].[ProjectId],
+	[NuTask_Project].[PortalId],
+	[NuTask_Project].[ProjectName],
+	[NuTask_Project].[Description],
+	[NuTask_Project].[AllocatedBudget],
+	[NuTask_Project].[DueDate],
+	[NuTask_Project].[MemberRole]
+FROM {objectQualifier}NuTask_Project
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Project_ListByPortals
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Project_ListByPortals
+	@PortalId int
+AS
+
+SELECT
+	[NuTask_Project].[ProjectId],
+	[NuTask_Project].[PortalId],
+	[NuTask_Project].[ProjectName],
+	[NuTask_Project].[Description],
+	[NuTask_Project].[AllocatedBudget],
+	[NuTask_Project].[DueDate],
+	[NuTask_Project].[MemberRole]
+FROM {objectQualifier}NuTask_Project
+WHERE
+	[NuTask_Project].[PortalId]=@PortalId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Project_Add
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Project_Add
+	@PortalId int
+	,@ProjectName nvarchar(255)
+	,@Description nvarchar(max)
+	,@AllocatedBudget money
+	,@DueDate datetime
+	,@MemberRole nvarchar(255)
+AS
+
+INSERT INTO {objectQualifier}NuTask_Project (
+	[PortalId]
+	,[ProjectName]
+	,[Description]
+	,[AllocatedBudget]
+	,[DueDate]
+	,[MemberRole]
+) VALUES (
+	@PortalId
+	,@ProjectName
+	,@Description
+	,@AllocatedBudget
+	,@DueDate
+	,@MemberRole
+)
+
+select SCOPE_IDENTITY()
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Project_Update
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Project_Update
+	@ProjectId int, 
+	@PortalId int, 
+	@ProjectName nvarchar(255), 
+	@Description nvarchar(max), 
+	@AllocatedBudget money, 
+	@DueDate datetime, 
+	@MemberRole nvarchar(255) 
+
+AS
+
+UPDATE {objectQualifier}NuTask_Project SET
+	   [PortalId] = @PortalId
+	   ,[ProjectName] = @ProjectName
+	   ,[Description] = @Description
+	   ,[AllocatedBudget] = @AllocatedBudget
+	   ,[DueDate] = @DueDate
+	   ,[MemberRole] = @MemberRole
+WHERE
+    
+	[ProjectId] = @ProjectId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Project_Delete
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+	
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Project_Delete
+	@ProjectId int
+    
+	AS
+
+DELETE FROM {objectQualifier}NuTask_Project
+WHERE
+    
+	[ProjectId] = @ProjectId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/* =====================================================================================
+/   TABLE: Task
+/  ===================================================================================== */
+
+/****** Object:  Select PK Stored Procedure {databaseOwner}{objectQualifier}NuTask_Task_Get    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Task_Get') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Task_Get
+GO
+
+/****** Object:  List Stored Procedure {databaseOwner}{objectQualifier}NuTask_Task_List    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Task_List') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Task_List
+GO
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_Task_GetByProject    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Task_ListByProject') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Task_ListByProject
+GO
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_Task_GetByTaskCategory    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Task_ListByTaskCategory') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Task_ListByTaskCategory
+GO
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_Task_GetByTaskStatus    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Task_ListByTaskStatus') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Task_ListByTaskStatus
+GO
+
+/****** Object:  Insert Stored Procedure {databaseOwner}{objectQualifier}NuTask_Task_Add    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Task_Add') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Task_Add
+GO
+
+/****** Object:  Update Stored Procedure {databaseOwner}{objectQualifier}NuTask_Task_Update    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Task_Update') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Task_Update
+GO
+
+/****** Object:  Delete Stored Procedure {databaseOwner}{objectQualifier}NuTask_Task_Delete    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Task_Delete') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Task_Delete
+GO
+	
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_Task_GetByCreatedBy    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Task_ListByCreatedBy') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Task_ListByCreatedBy
+GO        
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_Task_GetByAssignedTo    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Task_ListByAssignedTo') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Task_ListByAssignedTo
+GO        
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_Task_GetByDateStart    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Task_ListByDateStart') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Task_ListByDateStart
+GO        
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_Task_GetByDateEnd    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Task_ListByDateEnd') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Task_ListByDateEnd
+GO        
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_Task_GetByDueDate    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_Task_ListByDueDate') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_Task_ListByDueDate
+GO        
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Task_Get
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Task_Get
+	@TaskId int
+AS
+
+SELECT
+	[NuTask_Task].[TaskId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_Task].[ProjectId],
+ 	[CA].[Title] as CategoryName,
+	[NuTask_Task].[CategoryId],
+ 	[ST].[StatusName] as StatusName,
+	[NuTask_Task].[StatusId],
+ 	[CRU].[DisplayName] as CreatedByName,
+	[NuTask_Task].[CreatedBy],
+	[NuTask_Task].[CreatedDate],
+ 	[ASU].[DisplayName] as AssignedToName,
+	[NuTask_Task].[AssignedTo],
+	[NuTask_Task].[AssignedDate],
+	[NuTask_Task].[Title],
+	[NuTask_Task].[Descrition],
+	[NuTask_Task].[EstimatedTime],
+	[NuTask_Task].[EstimatedTimeUnit],
+	[NuTask_Task].[DateStart],
+	[NuTask_Task].[DateEnd],
+	[NuTask_Task].[DueDate],
+	[NuTask_Task].[AllocatedBudget],
+	[NuTask_Task].[AllocatedExpenses]
+FROM {objectQualifier}NuTask_Task
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_Task.ProjectId = PR.ProjectId
+    INNER JOIN NuTask_TaskCategory CA ON {objectQualifier}NuTask_Task.CategoryId = CA.CategoryId
+    INNER JOIN NuTask_TaskStatus ST ON {objectQualifier}NuTask_Task.StatusId = ST.StatusId
+    INNER JOIN Users CRU ON {objectQualifier}NuTask_Task.CreatedBy = CRU.UserId
+    LEFT OUTER JOIN Users ASU ON {objectQualifier}NuTask_Task.AssignedTo = ASU.UserId
+WHERE
+	[{objectQualifier}NuTask_Task].[TaskId] = @TaskId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Task_List 
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Task_List
+AS
+
+SELECT
+	[NuTask_Task].[TaskId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_Task].[ProjectId],
+ 	[CA].[Title] as CategoryName,
+	[NuTask_Task].[CategoryId],
+ 	[ST].[StatusName] as StatusName,
+	[NuTask_Task].[StatusId],
+ 	[CRU].[DisplayName] as CreatedByName,
+	[NuTask_Task].[CreatedBy],
+	[NuTask_Task].[CreatedDate],
+ 	[ASU].[DisplayName] as AssignedToName,
+	[NuTask_Task].[AssignedTo],
+	[NuTask_Task].[AssignedDate],
+	[NuTask_Task].[Title],
+	[NuTask_Task].[Descrition],
+	[NuTask_Task].[EstimatedTime],
+	[NuTask_Task].[EstimatedTimeUnit],
+	[NuTask_Task].[DateStart],
+	[NuTask_Task].[DateEnd],
+	[NuTask_Task].[DueDate],
+	[NuTask_Task].[AllocatedBudget],
+	[NuTask_Task].[AllocatedExpenses]
+FROM {objectQualifier}NuTask_Task
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_Task.ProjectId = PR.ProjectId
+    INNER JOIN NuTask_TaskCategory CA ON {objectQualifier}NuTask_Task.CategoryId = CA.CategoryId
+    INNER JOIN NuTask_TaskStatus ST ON {objectQualifier}NuTask_Task.StatusId = ST.StatusId
+    INNER JOIN Users CRU ON {objectQualifier}NuTask_Task.CreatedBy = CRU.UserId
+    LEFT OUTER JOIN Users ASU ON {objectQualifier}NuTask_Task.AssignedTo = ASU.UserId
+ORDER BY
+ 	[NuTask_Task].[CreatedDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+            
+/* -------------------------------------------------------------------------------------
+/   NuTask_Task_ListByCreatedBy 
+/  ------------------------------------------------------------------------------------- */
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Task_ListByCreatedBy
+	@CreatedBy int
+AS
+
+SELECT
+	[NuTask_Task].[TaskId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_Task].[ProjectId],
+ 	[CA].[Title] as CategoryName,
+	[NuTask_Task].[CategoryId],
+ 	[ST].[StatusName] as StatusName,
+	[NuTask_Task].[StatusId],
+ 	[CRU].[DisplayName] as CreatedByName,
+	[NuTask_Task].[CreatedBy],
+	[NuTask_Task].[CreatedDate],
+ 	[ASU].[DisplayName] as AssignedToName,
+	[NuTask_Task].[AssignedTo],
+	[NuTask_Task].[AssignedDate],
+	[NuTask_Task].[Title],
+	[NuTask_Task].[Descrition],
+	[NuTask_Task].[EstimatedTime],
+	[NuTask_Task].[EstimatedTimeUnit],
+	[NuTask_Task].[DateStart],
+	[NuTask_Task].[DateEnd],
+	[NuTask_Task].[DueDate],
+	[NuTask_Task].[AllocatedBudget],
+	[NuTask_Task].[AllocatedExpenses]
+FROM {objectQualifier}NuTask_Task
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_Task.ProjectId = PR.ProjectId
+    INNER JOIN NuTask_TaskCategory CA ON {objectQualifier}NuTask_Task.CategoryId = CA.CategoryId
+    INNER JOIN NuTask_TaskStatus ST ON {objectQualifier}NuTask_Task.StatusId = ST.StatusId
+    INNER JOIN Users CRU ON {objectQualifier}NuTask_Task.CreatedBy = CRU.UserId
+    LEFT OUTER JOIN Users ASU ON {objectQualifier}NuTask_Task.AssignedTo = ASU.UserId
+WHERE
+	[NuTask_Task].[CreatedBy] = @CreatedBy
+ORDER BY
+ 	[NuTask_Task].[CreatedDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO            
+            
+            
+/* -------------------------------------------------------------------------------------
+/   NuTask_Task_ListByAssignedTo 
+/  ------------------------------------------------------------------------------------- */
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Task_ListByAssignedTo
+	@AssignedTo int
+AS
+
+SELECT
+	[NuTask_Task].[TaskId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_Task].[ProjectId],
+ 	[CA].[Title] as CategoryName,
+	[NuTask_Task].[CategoryId],
+ 	[ST].[StatusName] as StatusName,
+	[NuTask_Task].[StatusId],
+ 	[CRU].[DisplayName] as CreatedByName,
+	[NuTask_Task].[CreatedBy],
+	[NuTask_Task].[CreatedDate],
+ 	[ASU].[DisplayName] as AssignedToName,
+	[NuTask_Task].[AssignedTo],
+	[NuTask_Task].[AssignedDate],
+	[NuTask_Task].[Title],
+	[NuTask_Task].[Descrition],
+	[NuTask_Task].[EstimatedTime],
+	[NuTask_Task].[EstimatedTimeUnit],
+	[NuTask_Task].[DateStart],
+	[NuTask_Task].[DateEnd],
+	[NuTask_Task].[DueDate],
+	[NuTask_Task].[AllocatedBudget],
+	[NuTask_Task].[AllocatedExpenses]
+FROM {objectQualifier}NuTask_Task
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_Task.ProjectId = PR.ProjectId
+    INNER JOIN NuTask_TaskCategory CA ON {objectQualifier}NuTask_Task.CategoryId = CA.CategoryId
+    INNER JOIN NuTask_TaskStatus ST ON {objectQualifier}NuTask_Task.StatusId = ST.StatusId
+    INNER JOIN Users CRU ON {objectQualifier}NuTask_Task.CreatedBy = CRU.UserId
+    LEFT OUTER JOIN Users ASU ON {objectQualifier}NuTask_Task.AssignedTo = ASU.UserId
+WHERE
+	[NuTask_Task].[AssignedTo] = @AssignedTo
+ORDER BY
+ 	[NuTask_Task].[CreatedDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO            
+            
+            
+/* -------------------------------------------------------------------------------------
+/   NuTask_Task_ListByDateStart 
+/  ------------------------------------------------------------------------------------- */
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Task_ListByDateStart
+	@DateStart int
+AS
+
+SELECT
+	[NuTask_Task].[TaskId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_Task].[ProjectId],
+ 	[CA].[Title] as CategoryName,
+	[NuTask_Task].[CategoryId],
+ 	[ST].[StatusName] as StatusName,
+	[NuTask_Task].[StatusId],
+ 	[CRU].[DisplayName] as CreatedByName,
+	[NuTask_Task].[CreatedBy],
+	[NuTask_Task].[CreatedDate],
+ 	[ASU].[DisplayName] as AssignedToName,
+	[NuTask_Task].[AssignedTo],
+	[NuTask_Task].[AssignedDate],
+	[NuTask_Task].[Title],
+	[NuTask_Task].[Descrition],
+	[NuTask_Task].[EstimatedTime],
+	[NuTask_Task].[EstimatedTimeUnit],
+	[NuTask_Task].[DateStart],
+	[NuTask_Task].[DateEnd],
+	[NuTask_Task].[DueDate],
+	[NuTask_Task].[AllocatedBudget],
+	[NuTask_Task].[AllocatedExpenses]
+FROM {objectQualifier}NuTask_Task
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_Task.ProjectId = PR.ProjectId
+    INNER JOIN NuTask_TaskCategory CA ON {objectQualifier}NuTask_Task.CategoryId = CA.CategoryId
+    INNER JOIN NuTask_TaskStatus ST ON {objectQualifier}NuTask_Task.StatusId = ST.StatusId
+    INNER JOIN Users CRU ON {objectQualifier}NuTask_Task.CreatedBy = CRU.UserId
+    LEFT OUTER JOIN Users ASU ON {objectQualifier}NuTask_Task.AssignedTo = ASU.UserId
+WHERE
+	[NuTask_Task].[DateStart] = @DateStart
+ORDER BY
+ 	[NuTask_Task].[CreatedDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO            
+            
+            
+/* -------------------------------------------------------------------------------------
+/   NuTask_Task_ListByDateEnd 
+/  ------------------------------------------------------------------------------------- */
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Task_ListByDateEnd
+	@DateEnd int
+AS
+
+SELECT
+	[NuTask_Task].[TaskId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_Task].[ProjectId],
+ 	[CA].[Title] as CategoryName,
+	[NuTask_Task].[CategoryId],
+ 	[ST].[StatusName] as StatusName,
+	[NuTask_Task].[StatusId],
+ 	[CRU].[DisplayName] as CreatedByName,
+	[NuTask_Task].[CreatedBy],
+	[NuTask_Task].[CreatedDate],
+ 	[ASU].[DisplayName] as AssignedToName,
+	[NuTask_Task].[AssignedTo],
+	[NuTask_Task].[AssignedDate],
+	[NuTask_Task].[Title],
+	[NuTask_Task].[Descrition],
+	[NuTask_Task].[EstimatedTime],
+	[NuTask_Task].[EstimatedTimeUnit],
+	[NuTask_Task].[DateStart],
+	[NuTask_Task].[DateEnd],
+	[NuTask_Task].[DueDate],
+	[NuTask_Task].[AllocatedBudget],
+	[NuTask_Task].[AllocatedExpenses]
+FROM {objectQualifier}NuTask_Task
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_Task.ProjectId = PR.ProjectId
+    INNER JOIN NuTask_TaskCategory CA ON {objectQualifier}NuTask_Task.CategoryId = CA.CategoryId
+    INNER JOIN NuTask_TaskStatus ST ON {objectQualifier}NuTask_Task.StatusId = ST.StatusId
+    INNER JOIN Users CRU ON {objectQualifier}NuTask_Task.CreatedBy = CRU.UserId
+    LEFT OUTER JOIN Users ASU ON {objectQualifier}NuTask_Task.AssignedTo = ASU.UserId
+WHERE
+	[NuTask_Task].[DateEnd] = @DateEnd
+ORDER BY
+ 	[NuTask_Task].[CreatedDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO            
+            
+            
+/* -------------------------------------------------------------------------------------
+/   NuTask_Task_ListByDueDate 
+/  ------------------------------------------------------------------------------------- */
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Task_ListByDueDate
+	@DueDate int
+AS
+
+SELECT
+	[NuTask_Task].[TaskId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_Task].[ProjectId],
+ 	[CA].[Title] as CategoryName,
+	[NuTask_Task].[CategoryId],
+ 	[ST].[StatusName] as StatusName,
+	[NuTask_Task].[StatusId],
+ 	[CRU].[DisplayName] as CreatedByName,
+	[NuTask_Task].[CreatedBy],
+	[NuTask_Task].[CreatedDate],
+ 	[ASU].[DisplayName] as AssignedToName,
+	[NuTask_Task].[AssignedTo],
+	[NuTask_Task].[AssignedDate],
+	[NuTask_Task].[Title],
+	[NuTask_Task].[Descrition],
+	[NuTask_Task].[EstimatedTime],
+	[NuTask_Task].[EstimatedTimeUnit],
+	[NuTask_Task].[DateStart],
+	[NuTask_Task].[DateEnd],
+	[NuTask_Task].[DueDate],
+	[NuTask_Task].[AllocatedBudget],
+	[NuTask_Task].[AllocatedExpenses]
+FROM {objectQualifier}NuTask_Task
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_Task.ProjectId = PR.ProjectId
+    INNER JOIN NuTask_TaskCategory CA ON {objectQualifier}NuTask_Task.CategoryId = CA.CategoryId
+    INNER JOIN NuTask_TaskStatus ST ON {objectQualifier}NuTask_Task.StatusId = ST.StatusId
+    INNER JOIN Users CRU ON {objectQualifier}NuTask_Task.CreatedBy = CRU.UserId
+    LEFT OUTER JOIN Users ASU ON {objectQualifier}NuTask_Task.AssignedTo = ASU.UserId
+WHERE
+	[NuTask_Task].[DueDate] = @DueDate
+ORDER BY
+ 	[NuTask_Task].[CreatedDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO            
+            
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Task_ListByProject
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Task_ListByProject
+	@ProjectId int
+AS
+
+SELECT
+	[NuTask_Task].[TaskId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_Task].[ProjectId],
+ 	[CA].[Title] as CategoryName,
+	[NuTask_Task].[CategoryId],
+ 	[ST].[StatusName] as StatusName,
+	[NuTask_Task].[StatusId],
+ 	[CRU].[DisplayName] as CreatedByName,
+	[NuTask_Task].[CreatedBy],
+	[NuTask_Task].[CreatedDate],
+ 	[ASU].[DisplayName] as AssignedToName,
+	[NuTask_Task].[AssignedTo],
+	[NuTask_Task].[AssignedDate],
+	[NuTask_Task].[Title],
+	[NuTask_Task].[Descrition],
+	[NuTask_Task].[EstimatedTime],
+	[NuTask_Task].[EstimatedTimeUnit],
+	[NuTask_Task].[DateStart],
+	[NuTask_Task].[DateEnd],
+	[NuTask_Task].[DueDate],
+	[NuTask_Task].[AllocatedBudget],
+	[NuTask_Task].[AllocatedExpenses]
+FROM {objectQualifier}NuTask_Task
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_Task.ProjectId = PR.ProjectId
+    INNER JOIN NuTask_TaskCategory CA ON {objectQualifier}NuTask_Task.CategoryId = CA.CategoryId
+    INNER JOIN NuTask_TaskStatus ST ON {objectQualifier}NuTask_Task.StatusId = ST.StatusId
+    INNER JOIN Users CRU ON {objectQualifier}NuTask_Task.CreatedBy = CRU.UserId
+    LEFT OUTER JOIN Users ASU ON {objectQualifier}NuTask_Task.AssignedTo = ASU.UserId
+WHERE
+	[NuTask_Task].[ProjectId]=@ProjectId
+ORDER BY
+ 	[NuTask_Task].[CreatedDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+/* -------------------------------------------------------------------------------------
+/   NuTask_Task_ListByTaskCategory
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Task_ListByTaskCategory
+	@CategoryId int
+AS
+
+SELECT
+	[NuTask_Task].[TaskId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_Task].[ProjectId],
+ 	[CA].[Title] as CategoryName,
+	[NuTask_Task].[CategoryId],
+ 	[ST].[StatusName] as StatusName,
+	[NuTask_Task].[StatusId],
+ 	[CRU].[DisplayName] as CreatedByName,
+	[NuTask_Task].[CreatedBy],
+	[NuTask_Task].[CreatedDate],
+ 	[ASU].[DisplayName] as AssignedToName,
+	[NuTask_Task].[AssignedTo],
+	[NuTask_Task].[AssignedDate],
+	[NuTask_Task].[Title],
+	[NuTask_Task].[Descrition],
+	[NuTask_Task].[EstimatedTime],
+	[NuTask_Task].[EstimatedTimeUnit],
+	[NuTask_Task].[DateStart],
+	[NuTask_Task].[DateEnd],
+	[NuTask_Task].[DueDate],
+	[NuTask_Task].[AllocatedBudget],
+	[NuTask_Task].[AllocatedExpenses]
+FROM {objectQualifier}NuTask_Task
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_Task.ProjectId = PR.ProjectId
+    INNER JOIN NuTask_TaskCategory CA ON {objectQualifier}NuTask_Task.CategoryId = CA.CategoryId
+    INNER JOIN NuTask_TaskStatus ST ON {objectQualifier}NuTask_Task.StatusId = ST.StatusId
+    INNER JOIN Users CRU ON {objectQualifier}NuTask_Task.CreatedBy = CRU.UserId
+    LEFT OUTER JOIN Users ASU ON {objectQualifier}NuTask_Task.AssignedTo = ASU.UserId
+WHERE
+	[NuTask_Task].[CategoryId]=@CategoryId
+ORDER BY
+ 	[NuTask_Task].[CreatedDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+/* -------------------------------------------------------------------------------------
+/   NuTask_Task_ListByTaskStatus
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Task_ListByTaskStatus
+	@StatusId int
+AS
+
+SELECT
+	[NuTask_Task].[TaskId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_Task].[ProjectId],
+ 	[CA].[Title] as CategoryName,
+	[NuTask_Task].[CategoryId],
+ 	[ST].[StatusName] as StatusName,
+	[NuTask_Task].[StatusId],
+ 	[CRU].[DisplayName] as CreatedByName,
+	[NuTask_Task].[CreatedBy],
+	[NuTask_Task].[CreatedDate],
+ 	[ASU].[DisplayName] as AssignedToName,
+	[NuTask_Task].[AssignedTo],
+	[NuTask_Task].[AssignedDate],
+	[NuTask_Task].[Title],
+	[NuTask_Task].[Descrition],
+	[NuTask_Task].[EstimatedTime],
+	[NuTask_Task].[EstimatedTimeUnit],
+	[NuTask_Task].[DateStart],
+	[NuTask_Task].[DateEnd],
+	[NuTask_Task].[DueDate],
+	[NuTask_Task].[AllocatedBudget],
+	[NuTask_Task].[AllocatedExpenses]
+FROM {objectQualifier}NuTask_Task
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_Task.ProjectId = PR.ProjectId
+    INNER JOIN NuTask_TaskCategory CA ON {objectQualifier}NuTask_Task.CategoryId = CA.CategoryId
+    INNER JOIN NuTask_TaskStatus ST ON {objectQualifier}NuTask_Task.StatusId = ST.StatusId
+    INNER JOIN Users CRU ON {objectQualifier}NuTask_Task.CreatedBy = CRU.UserId
+    LEFT OUTER JOIN Users ASU ON {objectQualifier}NuTask_Task.AssignedTo = ASU.UserId
+WHERE
+	[NuTask_Task].[StatusId]=@StatusId
+ORDER BY
+ 	[NuTask_Task].[CreatedDate] DESC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Task_Add
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Task_Add
+	@ProjectId int
+	,@CategoryId int
+	,@StatusId int
+	,@CreatedBy int
+	,@CreatedDate datetime
+	,@AssignedTo int
+	,@AssignedDate datetime
+	,@Title nvarchar(255)
+	,@Descrition nvarchar(max)
+	,@EstimatedTime decimal(18, 2)
+	,@EstimatedTimeUnit nvarchar(1)
+	,@DateStart datetime
+	,@DateEnd datetime
+	,@DueDate datetime
+	,@AllocatedBudget money
+	,@AllocatedExpenses money
+AS
+
+INSERT INTO {objectQualifier}NuTask_Task (
+	[ProjectId]
+	,[CategoryId]
+	,[StatusId]
+	,[CreatedBy]
+	,[CreatedDate]
+	,[AssignedTo]
+	,[AssignedDate]
+	,[Title]
+	,[Descrition]
+	,[EstimatedTime]
+	,[EstimatedTimeUnit]
+	,[DateStart]
+	,[DateEnd]
+	,[DueDate]
+	,[AllocatedBudget]
+	,[AllocatedExpenses]
+) VALUES (
+	@ProjectId
+	,@CategoryId
+	,@StatusId
+	,@CreatedBy
+	,@CreatedDate
+	,@AssignedTo
+	,@AssignedDate
+	,@Title
+	,@Descrition
+	,@EstimatedTime
+	,@EstimatedTimeUnit
+	,@DateStart
+	,@DateEnd
+	,@DueDate
+	,@AllocatedBudget
+	,@AllocatedExpenses
+)
+
+select SCOPE_IDENTITY()
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Task_Update
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Task_Update
+	@TaskId int, 
+	@ProjectId int, 
+	@CategoryId int, 
+	@StatusId int, 
+	@CreatedBy int, 
+	@CreatedDate datetime, 
+	@AssignedTo int, 
+	@AssignedDate datetime, 
+	@Title nvarchar(255), 
+	@Descrition nvarchar(max), 
+	@EstimatedTime decimal(18, 2), 
+	@EstimatedTimeUnit nvarchar(1), 
+	@DateStart datetime, 
+	@DateEnd datetime, 
+	@DueDate datetime, 
+	@AllocatedBudget money, 
+	@AllocatedExpenses money 
+
+AS
+
+UPDATE {objectQualifier}NuTask_Task SET
+	   [ProjectId] = @ProjectId
+	   ,[CategoryId] = @CategoryId
+	   ,[StatusId] = @StatusId
+	   ,[CreatedBy] = @CreatedBy
+	   ,[CreatedDate] = @CreatedDate
+	   ,[AssignedTo] = @AssignedTo
+	   ,[AssignedDate] = @AssignedDate
+	   ,[Title] = @Title
+	   ,[Descrition] = @Descrition
+	   ,[EstimatedTime] = @EstimatedTime
+	   ,[EstimatedTimeUnit] = @EstimatedTimeUnit
+	   ,[DateStart] = @DateStart
+	   ,[DateEnd] = @DateEnd
+	   ,[DueDate] = @DueDate
+	   ,[AllocatedBudget] = @AllocatedBudget
+	   ,[AllocatedExpenses] = @AllocatedExpenses
+WHERE
+    
+	[TaskId] = @TaskId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_Task_Delete
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+	
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_Task_Delete
+	@TaskId int
+    
+	AS
+
+DELETE FROM {objectQualifier}NuTask_Task
+WHERE
+    
+	[TaskId] = @TaskId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/* =====================================================================================
+/   TABLE: TaskCategory
+/  ===================================================================================== */
+
+/****** Object:  Select PK Stored Procedure {databaseOwner}{objectQualifier}NuTask_TaskCategory_Get    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_TaskCategory_Get') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_TaskCategory_Get
+GO
+
+/****** Object:  List Stored Procedure {databaseOwner}{objectQualifier}NuTask_TaskCategory_List    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_TaskCategory_List') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_TaskCategory_List
+GO
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_TaskCategory_GetByProject    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_TaskCategory_ListByProject') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_TaskCategory_ListByProject
+GO
+
+/****** Object:  Insert Stored Procedure {databaseOwner}{objectQualifier}NuTask_TaskCategory_Add    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_TaskCategory_Add') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_TaskCategory_Add
+GO
+
+/****** Object:  Update Stored Procedure {databaseOwner}{objectQualifier}NuTask_TaskCategory_Update    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_TaskCategory_Update') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_TaskCategory_Update
+GO
+
+/****** Object:  Delete Stored Procedure {databaseOwner}{objectQualifier}NuTask_TaskCategory_Delete    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_TaskCategory_Delete') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_TaskCategory_Delete
+GO
+	
+
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_TaskCategory_Get
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_TaskCategory_Get
+	@CategoryId int
+AS
+
+SELECT
+	[NuTask_TaskCategory].[CategoryId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_TaskCategory].[ProjectId],
+	[NuTask_TaskCategory].[Title],
+	[NuTask_TaskCategory].[ViewOrder]
+FROM {objectQualifier}NuTask_TaskCategory
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_TaskCategory.ProjectId = PR.ProjectId
+WHERE
+	[{objectQualifier}NuTask_TaskCategory].[CategoryId] = @CategoryId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_TaskCategory_List 
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_TaskCategory_List
+AS
+
+SELECT
+	[NuTask_TaskCategory].[CategoryId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_TaskCategory].[ProjectId],
+	[NuTask_TaskCategory].[Title],
+	[NuTask_TaskCategory].[ViewOrder]
+FROM {objectQualifier}NuTask_TaskCategory
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_TaskCategory.ProjectId = PR.ProjectId
+ORDER BY
+ 	[NuTask_TaskCategory].[ViewOrder] ASC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_TaskCategory_ListByProject
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_TaskCategory_ListByProject
+	@ProjectId int
+AS
+
+SELECT
+	[NuTask_TaskCategory].[CategoryId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_TaskCategory].[ProjectId],
+	[NuTask_TaskCategory].[Title],
+	[NuTask_TaskCategory].[ViewOrder]
+FROM {objectQualifier}NuTask_TaskCategory
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_TaskCategory.ProjectId = PR.ProjectId
+WHERE
+	[NuTask_TaskCategory].[ProjectId]=@ProjectId
+ORDER BY
+ 	[NuTask_TaskCategory].[ViewOrder] ASC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_TaskCategory_Add
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_TaskCategory_Add
+	@ProjectId int
+	,@Title nvarchar(255)
+	,@ViewOrder int
+AS
+
+INSERT INTO {objectQualifier}NuTask_TaskCategory (
+	[ProjectId]
+	,[Title]
+	,[ViewOrder]
+) VALUES (
+	@ProjectId
+	,@Title
+	,@ViewOrder
+)
+
+select SCOPE_IDENTITY()
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_TaskCategory_Update
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_TaskCategory_Update
+	@CategoryId int, 
+	@ProjectId int, 
+	@Title nvarchar(255), 
+	@ViewOrder int 
+
+AS
+
+UPDATE {objectQualifier}NuTask_TaskCategory SET
+	   [ProjectId] = @ProjectId
+	   ,[Title] = @Title
+	   ,[ViewOrder] = @ViewOrder
+WHERE
+    
+	[CategoryId] = @CategoryId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_TaskCategory_Delete
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+	
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_TaskCategory_Delete
+	@CategoryId int
+    
+	AS
+
+DELETE FROM {objectQualifier}NuTask_TaskCategory
+WHERE
+    
+	[CategoryId] = @CategoryId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/* =====================================================================================
+/   TABLE: TaskStatus
+/  ===================================================================================== */
+
+/****** Object:  Select PK Stored Procedure {databaseOwner}{objectQualifier}NuTask_TaskStatus_Get    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_TaskStatus_Get') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_TaskStatus_Get
+GO
+
+/****** Object:  List Stored Procedure {databaseOwner}{objectQualifier}NuTask_TaskStatus_List    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_TaskStatus_List') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_TaskStatus_List
+GO
+
+/****** Object:  Select foreign key Stored Procedure {databaseOwner}{objectQualifier}NuTask_TaskStatus_GetByProject    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_TaskStatus_ListByProject') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_TaskStatus_ListByProject
+GO
+
+/****** Object:  Insert Stored Procedure {databaseOwner}{objectQualifier}NuTask_TaskStatus_Add    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_TaskStatus_Add') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_TaskStatus_Add
+GO
+
+/****** Object:  Update Stored Procedure {databaseOwner}{objectQualifier}NuTask_TaskStatus_Update    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_TaskStatus_Update') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_TaskStatus_Update
+GO
+
+/****** Object:  Delete Stored Procedure {databaseOwner}{objectQualifier}NuTask_TaskStatus_Delete    Script Date: Mittwoch, 5. Dezember 2012 ******/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}NuTask_TaskStatus_Delete') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+drop procedure {databaseOwner}{objectQualifier}NuTask_TaskStatus_Delete
+GO
+	
+
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_TaskStatus_Get
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_TaskStatus_Get
+	@StatusId int
+AS
+
+SELECT
+	[NuTask_TaskStatus].[StatusId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_TaskStatus].[ProjectId],
+	[NuTask_TaskStatus].[StatusName],
+	[NuTask_TaskStatus].[IsActiveStatus],
+	[NuTask_TaskStatus].[IsClosedStatus],
+	[NuTask_TaskStatus].[ViewOrder]
+FROM {objectQualifier}NuTask_TaskStatus
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_TaskStatus.ProjectId = PR.ProjectId
+WHERE
+	[{objectQualifier}NuTask_TaskStatus].[StatusId] = @StatusId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_TaskStatus_List 
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_TaskStatus_List
+AS
+
+SELECT
+	[NuTask_TaskStatus].[StatusId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_TaskStatus].[ProjectId],
+	[NuTask_TaskStatus].[StatusName],
+	[NuTask_TaskStatus].[IsActiveStatus],
+	[NuTask_TaskStatus].[IsClosedStatus],
+	[NuTask_TaskStatus].[ViewOrder]
+FROM {objectQualifier}NuTask_TaskStatus
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_TaskStatus.ProjectId = PR.ProjectId
+ORDER BY
+ 	[NuTask_TaskStatus].[ViewOrder] ASC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_TaskStatus_ListByProject
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_TaskStatus_ListByProject
+	@ProjectId int
+AS
+
+SELECT
+	[NuTask_TaskStatus].[StatusId],
+ 	[PR].[ProjectName] as ProjectName,
+	[NuTask_TaskStatus].[ProjectId],
+	[NuTask_TaskStatus].[StatusName],
+	[NuTask_TaskStatus].[IsActiveStatus],
+	[NuTask_TaskStatus].[IsClosedStatus],
+	[NuTask_TaskStatus].[ViewOrder]
+FROM {objectQualifier}NuTask_TaskStatus
+    INNER JOIN NuTask_Project PR ON {objectQualifier}NuTask_TaskStatus.ProjectId = PR.ProjectId
+WHERE
+	[NuTask_TaskStatus].[ProjectId]=@ProjectId
+ORDER BY
+ 	[NuTask_TaskStatus].[ViewOrder] ASC
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_TaskStatus_Add
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_TaskStatus_Add
+	@ProjectId int
+	,@StatusName nvarchar(255)
+	,@IsActiveStatus bit
+	,@IsClosedStatus bit
+	,@ViewOrder int
+AS
+
+INSERT INTO {objectQualifier}NuTask_TaskStatus (
+	[ProjectId]
+	,[StatusName]
+	,[IsActiveStatus]
+	,[IsClosedStatus]
+	,[ViewOrder]
+) VALUES (
+	@ProjectId
+	,@StatusName
+	,@IsActiveStatus
+	,@IsClosedStatus
+	,@ViewOrder
+)
+
+select SCOPE_IDENTITY()
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_TaskStatus_Update
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_TaskStatus_Update
+	@StatusId int, 
+	@ProjectId int, 
+	@StatusName nvarchar(255), 
+	@IsActiveStatus bit, 
+	@IsClosedStatus bit, 
+	@ViewOrder int 
+
+AS
+
+UPDATE {objectQualifier}NuTask_TaskStatus SET
+	   [ProjectId] = @ProjectId
+	   ,[StatusName] = @StatusName
+	   ,[IsActiveStatus] = @IsActiveStatus
+	   ,[IsClosedStatus] = @IsClosedStatus
+	   ,[ViewOrder] = @ViewOrder
+WHERE
+    
+	[StatusId] = @StatusId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/* -------------------------------------------------------------------------------------
+/   NuTask_TaskStatus_Delete
+/  ------------------------------------------------------------------------------------- */
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS OFF 
+GO
+	
+CREATE PROCEDURE {databaseOwner}{objectQualifier}NuTask_TaskStatus_Delete
+	@StatusId int
+    
+	AS
+
+DELETE FROM {objectQualifier}NuTask_TaskStatus
+WHERE
+    
+	[StatusId] = @StatusId
+GO
+
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+
